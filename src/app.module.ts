@@ -14,7 +14,9 @@ require('dotenv').config();
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      ssl: process.env.DATABASE_SSL === 'true',
+      ssl: {
+        rejectUnauthorized: false,
+      },
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
