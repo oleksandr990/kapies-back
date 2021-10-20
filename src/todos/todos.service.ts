@@ -12,7 +12,11 @@ export class TodosService {
   ) {}
 
   findAll(): Promise<Todos[]> {
-    return this.todosRepository.find();
+    return this.todosRepository.find({
+      order: {
+        created_at: 'DESC',
+      },
+    });
   }
 
   findOne(id: string): Promise<Todos> {
